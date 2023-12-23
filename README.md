@@ -1,122 +1,237 @@
-## Cloud DevOps ND - C4- Microservices at Scale using AWS & Kubernetes - Supporting Material and Project Starter
+Created by CircleCi API Token creation
 
-This repository is associated with Cloud DevOps ND - Course 04 - Microservices at Scale using AWS & Kubernetes. In here, you'll find:
-1. Supporting material used in the video demonstration in the course 
-1. Starting code for a project, in which you can containerize and deploy a machine learning srevice using Kubernetes.
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/TxPKVauowpGakqtq5eA283/JCVqKresYpcEMfcuqCVSgc/tree/main.svg?style=svg&circle-token=e321fdf0490170ed76c59222b69b1f40de7ff4df)](https://dl.circleci.com/status-badge/redirect/circleci/TxPKVauowpGakqtq5eA283/JCVqKresYpcEMfcuqCVSgc/tree/main?circle-token=e321fdf0490170ed76c59222b69b1f40de7ff4df)
+
+```sh
+[![<ORG_NAME>](https://circleci.com/<VCS>/<ORG_NAME>/<PROJECT_NAME>.svg?style=svg)](<LINK>)
+```
+<PROJECT_NAME> - Your project’s name. Example: circleci-docs
+
+![evantheoS](https://github.com/evantheoS/microservice-submit/blob/main/screenshots/circleci-project.png)
+
+<PROJECT_NAME> = microservice-submit-4
+
+<ORG_NAME> - The organization or user name the project in question belongs to
+
+
+![evantheoS](https://github.com/evantheoS/microservice-submit/blob/main/screenshots/circleci-organisation.png)
+
+<ORG_NAME> = cci-2s5yl
+
+VCS - your VCS provider (gh for "GitHub" and bb for Bitbucket)
+
+VCS = gh 
+<LINK> - The link you want the status badge to go to when clicked (example: the pipeline overview page)
+
+Optional: an API token (to create badges for private projects)
+
+
+![evantheoS](https://github.com/evantheoS/microservice-submit/blob/main/screenshots/circleci-api-token-creation.png)
+
+API-token created
+
+
+
+```sh
+[![cci-2s5yl](https://circleci.com/gh/cci-2s5yl/microservice-submit-4.svg?style=svg)](<LINK>)
+```
+[![cci-2s5yl](https://circleci.com/gh/cci-2s5yl/microservice-submit-4.svg?style=svg)](<LINK>)
+
+```sh
+[![cci-2s5yl](https://circleci.com/gh/cci-2s5yl/microservice-submit-4.svg?style=svg&circle-token=e321fdf0490170ed76c59222b69b1f40de7ff4df)](<LINK>)
+```
+[![cci-2s5yl](https://circleci.com/gh/cci-2s5yl/microservice-submit-4.svg?style=svg&circle-token=e321fdf0490170ed76c59222b69b1f40de7ff4df)](<LINK>)
+
+
+## Project Overview
+
+In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API.
+
+You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
+
+### Project Tasks
+
+Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
+
+-   Test your project code using linting
+-   Complete a Dockerfile to containerize this application
+-   Deploy your containerized application using Docker and make a prediction
+-   Improve the log statements in the source code for this application
+-   Configure Kubernetes and create a Kubernetes cluster
+-   Deploy a container using Kubernetes and make a prediction
+-   Upload a complete Github repo with CircleCI to indicate that your code has been tested
+
+**The final implementation of the project will showcase your abilities to operationalize production microservices.**
 
 ---
 
-### A. Dependencies
-#### A.1. Python
-[Download and install the python](https://www.python.org/downloads/). 
+## Setup the Environment
 
-#### A.2. Docker Desktop
-You would require you to install Docker Desktop to create containers for individual microservices. Refer the following links for instructions 
-* [macOS](https://docs.docker.com/docker-for-mac/install/), 
-* [Windows 10 64-bit: Pro, Enterprise, or Education](https://docs.docker.com/docker-for-windows/install/), 
-* [Windows  10 64-bit Home](https://docs.docker.com/toolbox/toolbox_install_windows/). 
-* You can find installation instructions for other operating systems at:  https://docs.docker.com/install/
+-   Create a virtualenv and activate it
+-   Run `make install` to install the necessary dependencies
 
-#### A.3. Kubernetes 
-You would need to install any one tool for creating a Kubernetes cluster - KubeOne / Minikube / kubectl on top of Docker Desktop:
-1. [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) directly on top of Docker desktop - For Windows/macOS
-2. [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) - For Linux/macOS
+### Running `app.py`
 
-#### A.4. AWS account to access AWS Lambda
-You'll need an [AWS account](https://aws.amazon.com/free/?all-free-tier.&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc) to get started with [AWS Lambda](https://aws.amazon.com/lambda/), which is a serverless computing platform on cloud.  
+1. Standalone: `python app.py`
+2. Run in Docker: `./run_docker.sh`
+3. Run in Kubernetes: `./run_kubernetes.sh`
 
-#### A.5. An account with Circle CI
-You may sign up on [CircleCI.com](https://circleci.com/signup/) with your GitHub credentials. 
+### Kubernetes Steps
 
----
+-   Setup and Configure Docker locally
+-   Setup and Configure Kubernetes locally
+-   Create Flask app in Container
+-   Run via kubectl
 
-### B. The Overarching Diagram
+## Tasks
 
-![Overview](https://camo.githubusercontent.com/bb29cd924f9eb66730bbf7b0ed069a6ae03d2f1a/68747470733a2f2f757365722d696d616765732e67697468756275736572636f6e74656e742e636f6d2f35383739322f35353335343438332d62616537616638302d353437612d313165392d393930392d6135363231323531303635622e706e67)
+To see the screenshots of each task go to the `screenshots` directory.
 
----
+### 1. Complete the Dockerfile
 
-### C. Tutorials
-
-#### C.1. AWS Lambda & Serverless
-
-* [Making Change](https://github.com/udacity/DevOps_Microservices/tree/master/lambda-functions/make-change-tutorial): Create and deploy a serverless lambda function that responds to an input request; this example creates the correct amount of change to make up a value in US dollars.
-* [Wikipedia Query](https://github.com/udacity/DevOps_Microservices/tree/master/lambda-functions/wikipedia-query): Deploy a lambda function that responds to an input, wikipedia page query; this example returns the first sentence of a specific wikipedia page upon being queried.
+-   Specify your python version
+-   Specify a working directory.
+-   Copy the app.py source code to that directory
+-   Install any dependencies in requirements.txt (`make install`)
+-   Expose a port when the container is created (port 80 is standard).
+-   Specify that the app runs at container launch.
 
 
-### D. Project Instructions
+To run `make lint` don't forget crete and active the virtual env before:
 
-* [Operationalize a Machine Learning Microservice API](https://github.com/udacity/DevOps_Microservices/tree/master/project-ml-microservice-kubernetes): Deploy a containerized, machine learning application using Kubernetes.
-
-To run any project code, you'll have to set up a virtual environment with the project dependencies. All of the following instructions are to be completed via a terminal/command line prompt. 
-
-### E. Create and Activate an Environment
-
-#### E.1. Git and version control
-These instructions also assume you have `git` installed for working with Github from a terminal window, but if you do not, you can download that first from this [Github installation page](https://www.atlassian.com/git/tutorials/install-git).
-
-**Now, you're ready to create your local environment!**
-
-1. If you haven't already done so, clone the project repository, and navigate to the main project folder. 
-```bash
-git clone https://github.com/udacity/DevOps_Microservices.git
-cd DevOps_Microservices/project-ml-microservice-kubernetes
+```sh
+$ make setup # create the virtual env
+$ source ~/.devops/bin/activate # active the virtual env
+$ make lint
 ```
 
-2. Create (and activate) a new environment, named `.devops` with Python 3. If prompted to proceed with the install `(Proceed [y]/n)` type y.
-```bash
-python3 -m venv ~/.devops
-source ~/.devops/bin/activate
+### 2. Run a Container & Make a Prediction
+
+-   Build the docker image from the Dockerfile; it is recommended that you use an optional --tag parameter as described in the build documentation.
+-   List the created docker images (for logging purposes).
+-   Run the containerized Flask app; publish the container’s port (`80`) to a host port (`8000`).
+
+Run the container using the `run_docker.sh` script created before following the steps above:
+
+```sh
+$ . ./run_docker.sh # Check the `Workarounds` section if you want to get more information about this.
 ```
 
-At this point your command line should look something like: `(.devops) <User>:project-ml-microservice-kubernetes<user>$`. The `(.devops)` indicates that your environment has been activated, and you can proceed with further package installations.
+After running the container (docker app) we can able to run the prediction using the `make_prediction.sh` script:
 
-3. Installing dependencies via project `Makefile`. Many of the project dependencies are listed in the file `requirements.txt`; these can be installed using `pip` commands in the provided `Makefile`. While in your project directory, type the following command to install these dependencies.
-```bash
-make install
+```sh
+$ . ./make_prediction.sh # Don't forget run the container before
 ```
 
-Now most of the `.devops` libraries are available to you. There are a couple of other libraries that we'll be using, which can be downloaded as specified, below. 
+### 3. Improve Logging & Save Output
 
----
+-   Add a prediction log statement
+-   Run the container and make a prediction to check the logs
 
-#### E.2. Other Libraries
-
-While you still have your `.devops` environment activated, you will still need to install:
-* Docker
-* Hadolint
-* Kubernetes ([Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) if you want to run Kubernetes locally)
-
-#### E.3. Docker
-
-You will need to use Docker to build and upload a containerized application. If you already have this installed and created a docker account, you may skip this step.
-
-1. You’ll need to [create a free docker account](https://hub.docker.com/signup), where you’ll choose a unique username and link your email to a docker account. **Your username is your unique docker ID.**
-
-2. To install the latest version of docker, choose the Community Edition (CE) for your operating system, [on docker’s installation site](https://docs.docker.com/v17.12/install/). It is also recommended that you install the latest, **stable** release:
-
-3. After installation, you can verify that you’ve successfully installed docker by printing its version in your terminal: `docker --version`
-
-#### E.4. Run Lint Checks
-
-This project also must pass two lint checks; `hadolint` checks the Dockerfile for errors and `pylint` checks the `app.py` source code for errors.
-
-1. Install `hadolint` following the instructions, [on hadolint's page]( https://github.com/hadolint/hadolint): 
-
-**For Mac:**
-```bash
-brew install hadolint
-```
-**For Windows:**
-```bash
-scoop install hadolint
-```
-2. In your terminal, type: `make lint` to run lint checks on the project code. If you haven’t changed any code, all requirements should be satisfied, and you should see a printed statement that rates your code (and prints out any additional comments):
-
-```bash
-------------------------------------
-Your code has been rated at 10.00/10
+```sh
+[2023-12-22 16:42:28,254] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2023-12-22 16:42:28,285] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-12-22 16:42:28,296] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-12-22 16:42:28,301] INFO in app: Prediction: [20.35373177134412]
+172.17.0.1 - - [22/Dec/2023 16:42:28] "POST /predict HTTP/1.1" 200 -
 ```
 
-That's about it! When working with kubernetes, you may need to install some other libraries, but these instructions will set you up with an environment that can build and deploy Docker containers.
 
+### 4. Upload the Docker Image
+
+-   Create a [Docker Hub](https://hub.docker.com/) account
+-   Built the docker container with this command `docker build --tag=<your_tag> .` **(Don't forget the tag name)**
+-   Define a `dockerpath` which is `<docker_hub_username>/<project_name>` e.g: `minorpath/kubernetes-p4`
+-   Authenticate and tag image
+-   Push your docker image to the `dockerpath`
+
+
+After complete all steps run the upload using the `upload_docker.sh` script:
+
+```sh
+$ . ./upload_docker.sh
+```
+
+### 5. Configure Kubernetes to Run Locally
+
+-   [Install Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux)
+-   [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
+
+### 6. Deploy with Kubernetes and Save Output Logs
+
+-   Define a dockerpath which will be `<docker_hub_username>/<project_name>`, this should be the same name as your uploaded repository (the same as in upload_docker.sh)
+-   Run the docker container with kubectl; you’ll have to specify the container and the port
+-   List the kubernetes pods
+-   Forward the container port to a host port, using the same ports as before
+
+After complete all steps run the kubernetes using `run_kubernetes.sh` script:
+
+```sh
+$ . ./run_kubernetes.sh
+```
+
+```sh
+Error from server (AlreadyExists): pods "flaskapp" already exists
+NAME       READY   STATUS    RESTARTS       AGE
+flaskapp   1/1     Running   2 (8m7s ago)   18m
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+
+(.devops) jenkins:~/environment/microservice-submit (main) $ bash ./make_prediction.sh
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+```
+After running the kubernete make a prediction using the `make_prediction.sh` script as we do in the [second task](#2-run-container--make-prediction).
+
+
+### 7. Delete Cluster
+
+If you want to delete the kubernetes cluster just run this command `minikube delete`. You can also stop the kubernetes cluster with this command `minikube stop`
+
+### 8. CircleCI Integration
+
+-   Create a [CircleCI Account](https://circleci.com/) (use your Github account for a better integration)
+-   Create a config using this [template](https://raw.githubusercontent.com/udacity/DevOps_Microservices/master/Lesson-2-Docker-format-containers/class-demos/.circleci/config.yml)
+-   Add a status badge using this template: `[![<evantheoS>](https://circleci.com/gh/evantheoS/microservice-submit.svg?style=svg)](https://circleci.com/gh/evantheoS/microservice-submit)` replace `<github_username>` and `<repository>` with your data. 
+
+## Workarounds
+
+### Minikube
+
+Minikube common issue 1: `Out of memory` or `No space left on the device`. Change the instance type from `t2.micro` to `t2.medium` and ensure at least 4GB of free space and 2GB of memory on the device. You can all docker images using this command `docker system prune -a` or remove all unused or dangling image with this command `docker system prune`
+Minikube common issue 2: `minkube start..gives error: "Exiting due to RSRC_INSUFFICIENT_CORES"..Is it possible to start minikube on this Mac with 2 CPU cores?`. solution:  minikube --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus=1 start
+
+### Bash scripts
+
+Sometimes you can't run a bash script using this format `./run_docker.sh` but you have some alternative like `bash run_docker.sh` or `. ./run_docker.sh`
+
+> **Note:** This is the same for all scripts (`*.sh`)
+
+### Adding tests
+
+Add `pytest` to the `requirements.txt` file and update the `Makefile` to add this command `python3 -m pytest -vv test_app.py` which is the file that contains the tests for `home` and `predict` endpoints.
+
+### Linting warnings
+
+The warning for logging format interpolation appears when we want to use f-strings but we can disable using W1202. So we need change this command `pylint --disable=R,C,W1203` to `pylint --disable=R,C,W1202`
+
+### Tests on Circle CI
+
+For pytest: https://circleci.com/docs/2.0/collect-test-data/#pytest
+
+### Kubernetes running docker image
+
+Don't use **80** as a port. e.g: `kubectl run app --image=$dockerpath --port=80` you can have some troubles with the forwarding of that port. Use a different port like **8080** e.g: `kubectl run app --image=$dockerpath --port=8080` so now you can forward that port with `kubectl port-forward deployment/app 8080:80`.
+
+> Don't forget update the `make_prediction.sh` script to use the same port as you are using to run the docker app _(with or without kubernetes)_

@@ -1,0 +1,12 @@
+ * Debugger is active!
+ * Debugger PIN: 194-414-639
+[2023-12-22 16:42:28,254] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2023-12-22 16:42:28,285] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-12-22 16:42:28,296] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2023-12-22 16:42:28,301] INFO in app: Prediction: [20.35373177134412]
+172.17.0.1 - - [22/Dec/2023 16:42:28] "POST /predict HTTP/1.1" 200 -
